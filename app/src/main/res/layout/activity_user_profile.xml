@@ -6,14 +6,198 @@
     android:layout_height="match_parent"
     tools:context=".view.UserProfileActivity">
 
-    <ImageView
-        android:id="@+id/user_profile_activity_user_image"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/user_profile_activity_guideline_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/user_profile_activity_guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/user_profile_activity_guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/user_profile_activity_guideline_center_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/user_profile_activity_guideline_center_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/user_profile_activity_card_view_image"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:cardCornerRadius="175dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardElevation="5dp"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_guideline_top"
+        app:layout_constraintRight_toLeftOf="@id/user_profile_activity_guideline_right">
+
+        <ImageView
+            android:id="@+id/user_profile_activity_user_image"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            tools:src="@drawable/img_profile_placeholder" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/user_profile_activity_card_view_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardElevation="7dp"
+        app:layout_constraintBottom_toTopOf="@id/user_profile_activity_text_fistname"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/user_profile_activity_guideline_right"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:id="@+id/user_profile_activity_text_age"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:text="27"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:background="#4CAF50"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/user_profile_activity_text_fistname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_card_view_image"
+        app:layout_constraintRight_toLeftOf="@id/user_profile_activity_guideline_center_left"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_text_lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_card_view_image"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_center_right"
+        android:layout_marginTop="16dp"/>
+
+    <View
+        android:id="@+id/user_profile_activity_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1E000000"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_text_fistname"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_title_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telefono:"
+        android:textSize="16sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_separator"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_left"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_text_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+549 11 1111 1111"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/user_profile_activity_title_phone"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_title_phone"
+        android:layout_marginStart="6dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_title_cell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Celular:"
+        android:textSize="16sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_title_phone"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_left"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_text_cell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+549 11 2222 2222"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/user_profile_activity_title_cell"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_title_cell"
+        android:layout_marginStart="6dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_title_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textSize="16sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_title_cell"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_left"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_text_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="seba@email.com"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/user_profile_activity_title_email"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_title_email"
+        android:layout_marginStart="6dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_title_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nacionalidad:"
+        android:textSize="16sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_activity_title_email"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_guideline_left"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/user_profile_activity_text_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Argentina"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/user_profile_activity_title_country"
+        app:layout_constraintLeft_toRightOf="@id/user_profile_activity_title_country"
+        android:layout_marginStart="6dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

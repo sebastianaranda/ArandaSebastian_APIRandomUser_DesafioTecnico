@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +38,12 @@ public class UsersListFragment extends Fragment implements UsersAdapter.UserAdap
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_users_list, container, false);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.swipe_refresh_layout);
         progressBar = view.findViewById(R.id.fragment_user_list_progressbar);
         progressBar.setVisibility(View.VISIBLE);
         RecyclerView recyclerView = view.findViewById(R.id.fragment_users_recycler);
         final UsersAdapter usersAdapter = new UsersAdapter(this);
-        UserController userController = new UserController();
+        final UserController userController = new UserController();
         userController.getUsersFromDAO(new ResultListener<List<User>>() {
             @Override
             public void finish(List<User> result) {
@@ -52,6 +55,21 @@ public class UsersListFragment extends Fragment implements UsersAdapter.UserAdap
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         recyclerView.setAdapter(usersAdapter);
+
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                userController.getUsersFromDAO(new ResultListener<List<User>>() {
+                    @Override
+                    public void finish(List<User> result) {
+                        usersAdapter.setUserList(result);
+                        usersAdapter.notifyDataSetChanged();
+                        Toast.makeText(getContext(), "El pedido se completo correctamente", Toast.LENGTH_SHORT).show();
+                        pullToRefresh.setRefreshing(false);
+                    }
+                });
+            }
+        });
         return view;
     }
 

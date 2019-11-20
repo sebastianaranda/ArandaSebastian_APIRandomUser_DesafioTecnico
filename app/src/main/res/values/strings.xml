@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">FluxIT_DesafioTecnico</string>
+    <!-- TITLES -->
+    <string name="app_name">FluxIT: Sebastian Aranda</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="user_profile_activity_name">Detalles</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- DRAWER -->
+    <string name="txt_drawer_open">Abrir menu lateral</string>
+    <string name="txt_drawer_close">Cerrar menu lateral</string>
 </resources>

@@ -35,4 +35,10 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    //GoogleMaps
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    //SearchView
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    //CircularImageView
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }

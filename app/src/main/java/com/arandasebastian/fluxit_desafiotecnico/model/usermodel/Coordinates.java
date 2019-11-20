@@ -1,28 +1,27 @@
 package com.arandasebastian.fluxit_desafiotecnico.model.usermodel;
 
 import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Coordinates implements Serializable {
     @SerializedName("latitude")
-    private String latitude;
+    private Double latitude;
     @SerializedName("longitude")
-    private String longitude;
+    private Double longitude;
 
     public Coordinates() {
     }
 
-    public Coordinates(String latitude, String longitude) {
+    public Coordinates(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 }

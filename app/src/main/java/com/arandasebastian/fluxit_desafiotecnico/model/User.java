@@ -5,7 +5,6 @@ import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Location;
 import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Name;
 import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Pictures;
 import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class User implements Serializable {

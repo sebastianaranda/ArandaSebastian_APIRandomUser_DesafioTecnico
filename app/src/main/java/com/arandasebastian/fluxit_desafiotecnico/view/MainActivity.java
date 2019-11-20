@@ -1,20 +1,35 @@
 package com.arandasebastian.fluxit_desafiotecnico.view;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.Menu;
+import android.view.MenuItem;
 import com.arandasebastian.fluxit_desafiotecnico.R;
 import com.arandasebastian.fluxit_desafiotecnico.model.User;
+import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements UsersListFragment.FragmentUserListener {
+public class MainActivity extends AppCompatActivity implements UsersListFragment.FragmentUserListener, NavigationView.OnNavigationItemSelectedListener {
+
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        NavigationView navigationView = findViewById(R.id.main_activity_navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        Toolbar toolbar = findViewById(R.id.toolbar_main_activity);
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.txt_drawer_open,R.string.txt_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
         attachFragment(new UsersListFragment());
     }
 
@@ -22,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements UsersListFragment
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_activity_fragment_container,fragment)
-                .addToBackStack(null)
                 .commit();
     }
 
@@ -34,4 +48,16 @@ public class MainActivity extends AppCompatActivity implements UsersListFragment
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
 }

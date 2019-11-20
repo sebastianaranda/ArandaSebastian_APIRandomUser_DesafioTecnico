@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.arandasebastian.fluxit_desafiotecnico.R;
@@ -73,7 +72,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             txtFirstName.setText(user.getName().getFirstName());
             //TODO: agregar codigo para cargar imagen del usuario
             Glide.with(itemView)
-                    .load(user.getPictures().getThumbnail())
+                    .load(user.getPictures().getPictureLarge())
                     .placeholder(R.drawable.img_profile_placeholder)
                     .into(imgUser);
         }

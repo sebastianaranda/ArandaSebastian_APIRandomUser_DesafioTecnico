@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_menu_about_me"
+        android:title="About Me"/>
+    <item
+        android:id="@+id/title_contact_me"
+        android:title="Contact Me">
+        <menu>
+            <item
+                android:id="@+id/main_menu_email"
+                android:title="Email"/>
+            <item
+                android:id="@+id/main_menu_linkedin"
+                android:title="LinkedIn"/>
+            <item
+                android:id="@+id/main_menu_call_me"
+                android:title="Call me"/>
+        </menu>
+    </item>
+</menu>

@@ -1,7 +1,6 @@
 package com.arandasebastian.fluxit_desafiotecnico.model.usermodel;
 
 import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Name implements Serializable {
@@ -19,10 +18,6 @@ public class Name implements Serializable {
         this.titleName = titleName;
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public String getTitleName() {
-        return titleName;
     }
 
     public String getFirstName() {

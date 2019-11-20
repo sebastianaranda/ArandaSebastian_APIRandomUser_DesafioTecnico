@@ -24,11 +24,4 @@ public class Pictures implements Serializable {
         return pictureLarge;
     }
 
-    public String getPictureMedium() {
-        return pictureMedium;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
 }

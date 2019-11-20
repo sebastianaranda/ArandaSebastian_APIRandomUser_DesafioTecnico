@@ -7,4 +7,26 @@
     <!-- DRAWER -->
     <string name="txt_drawer_open">Abrir menu lateral</string>
     <string name="txt_drawer_close">Cerrar menu lateral</string>
+    <string name="dev_name">Sebastian Aranda</string>
+    <string name="dev_age">26 años</string>
+    <string name="dev_address">Caballito, CABA</string>
+    <string name="dev_work_experience">Experiencia laboral</string>
+    <string name="dev_work_it_uber">19/04-Presente: IT Field Technician @ Uber</string>
+    <string name="dev_work_designer_uber">16/04-19/03: Multimedia Designer @ Uber</string>
+    <string name="dev_work_editor_universal">14/06-16/03: Video Editor @ Universal Group</string>
+    <string name="dev_education">Estudios</string>
+    <string name="dev_education_dh">19/08-Presente: Digital House</string>
+    <string name="dev_education_dh_android">Desarrollo Mobile Android</string>
+    <string name="dev_education_davinci">2011-2014: Instituto DaVinci</string>
+    <string name="dev_education_davinci_designer">Diseñador Multimedial</string>
+
+    <!-- USER PROFILE -->
+    <string name="user_last_name">Apellido</string>
+    <string name="user_first_name">Nombre</string>
+    <string name="user_phone">Telefono:</string>
+    <string name="user_cell">Celular:</string>
+    <string name="user_email">Email:</string>
+    <string name="user_country">Nacionalidad:</string>
+    <string name="user_location">Ubicacion</string>
+
 </resources>

@@ -29,24 +29,8 @@ public class Location implements Serializable {
         this.coordinates = coordinates;
     }
 
-    public Street getStreet() {
-        return street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
     public String getCountry() {
         return country;
-    }
-
-    public String getPostcode() {
-        return postcode;
     }
 
     public Coordinates getCoordinates() {

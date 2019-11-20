@@ -26,8 +26,7 @@ public class UserDAO extends UsersRetrofitDAO {
 
             @Override
             public void onFailure(Call<ContainerUsers> call, Throwable t) {
-                //TODO: borrar esta linea
-                Log.d("Error","Falló el pedido");
+                Log.d("Error","Falló el pedido.");
             }
         });
     }

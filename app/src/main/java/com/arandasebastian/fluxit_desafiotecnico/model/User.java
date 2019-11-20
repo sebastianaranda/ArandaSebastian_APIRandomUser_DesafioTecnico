@@ -4,6 +4,7 @@ import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.DOB;
 import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Location;
 import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Name;
 import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Pictures;
+import com.arandasebastian.fluxit_desafiotecnico.model.usermodel.Street;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
@@ -24,11 +25,13 @@ public class User implements Serializable {
     private DOB dob;
     @SerializedName("location")
     private Location location;
+    @SerializedName("street")
+    private Street street;
 
     public User() {
     }
 
-    public User(Name name, Pictures pictures, String gender, String email, String phone, String cell, DOB dob, Location location) {
+    public User(Name name, Pictures pictures, String gender, String email, String phone, String cell, DOB dob, Location location, Street street) {
         this.name = name;
         this.pictures = pictures;
         this.gender = gender;
@@ -37,6 +40,7 @@ public class User implements Serializable {
         this.cell = cell;
         this.dob = dob;
         this.location = location;
+        this.street = street;
     }
 
     public Name getName() {
@@ -45,10 +49,6 @@ public class User implements Serializable {
 
     public Pictures getPictures() {
         return pictures;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public String getEmail() {
@@ -70,4 +70,5 @@ public class User implements Serializable {
     public Location getLocation() {
         return location;
     }
+
 }

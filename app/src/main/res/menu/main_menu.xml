@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/main_menu_about_me"
-        android:title="About Me"/>
-    <item
-        android:id="@+id/title_contact_me"
-        android:title="Contact Me">
+    <item android:title="Sobre mi">
         <menu>
-            <item
-                android:id="@+id/main_menu_email"
-                android:title="Email"/>
-            <item
-                android:id="@+id/main_menu_linkedin"
-                android:title="LinkedIn"/>
-            <item
-                android:id="@+id/main_menu_call_me"
-                android:title="Call me"/>
+            <item android:title="@string/dev_name"/>
+            <item android:title="@string/dev_age"/>
+            <item android:title="@string/dev_address"/>
+        </menu>
+    </item>
+    <item android:title="@string/dev_work_experience">
+        <menu>
+            <item android:title="@string/dev_work_it_uber"/>
+            <item android:title="@string/dev_work_designer_uber"/>
+            <item android:title="@string/dev_work_editor_universal"/>
+        </menu>
+    </item>
+    <item android:title="@string/dev_education">
+        <menu>
+            <item android:title="@string/dev_education_dh"/>
+            <item android:title="@string/dev_education_dh_android"/>
+            <item android:title="@string/dev_education_davinci"/>
+            <item android:title="@string/dev_education_davinci_designer"/>
         </menu>
     </item>
 </menu>

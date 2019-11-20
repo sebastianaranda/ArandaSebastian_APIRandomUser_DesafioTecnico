@@ -40,7 +40,7 @@ public class UserProfileActivity extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        toolbar = findViewById(R.id.toolbar_user__profile_activity);
+        toolbar = findViewById(R.id.custom_toolbar_user_profile);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

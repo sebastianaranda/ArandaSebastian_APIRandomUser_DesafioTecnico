@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.arandasebastian.fluxit_desafiotecnico.R;
@@ -60,8 +59,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO: cambiar comportamiento al hacer click
-                    Toast.makeText(itemView.getContext(), "HICISTE CLICK", Toast.LENGTH_SHORT).show();
                     User selectedUser = userList.get(getAdapterPosition());
                     userAdapterListener.sendSelectedUser(selectedUser);
                 }
@@ -70,7 +67,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
         public void setUser(User user){
             txtFirstName.setText(user.getName().getFirstName());
-            //TODO: agregar codigo para cargar imagen del usuario
             Glide.with(itemView)
                     .load(user.getPictures().getPictureLarge())
                     .placeholder(R.drawable.img_profile_placeholder)

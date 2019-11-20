@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <include
-        android:id="@+id/toolbar_main_activity"
-        layout="@layout/toolbar" />
-
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/main_activity_drawer_layout"
         android:layout_width="match_parent"
@@ -29,8 +25,16 @@
             android:background="@color/colorWhite"
             android:theme="@style/NavigationView"
             app:headerLayout="@layout/header_navigation"
-            app:menu="@menu/main_menu" />
+            app:menu="@menu/main_menu"
+            app:itemTextColor="@color/colorGray"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/colorWhite" />
 
 </FrameLayout>

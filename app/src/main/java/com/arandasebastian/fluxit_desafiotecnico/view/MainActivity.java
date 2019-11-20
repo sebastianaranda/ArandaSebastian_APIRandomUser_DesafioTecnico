@@ -8,24 +8,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import com.arandasebastian.fluxit_desafiotecnico.R;
 import com.arandasebastian.fluxit_desafiotecnico.model.User;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements UsersListFragment.FragmentUserListener, NavigationView.OnNavigationItemSelectedListener {
-
-    private DrawerLayout drawerLayout;
+public class MainActivity extends AppCompatActivity implements UsersListFragment.FragmentUserListener, NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        drawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        DrawerLayout drawerLayout = findViewById(R.id.main_activity_drawer_layout);
         NavigationView navigationView = findViewById(R.id.main_activity_navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Toolbar toolbar = findViewById(R.id.toolbar_main_activity);
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.txt_drawer_open,R.string.txt_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -52,12 +49,6 @@ public class MainActivity extends AppCompatActivity implements UsersListFragment
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         return false;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
-        return true;
     }
 
 }

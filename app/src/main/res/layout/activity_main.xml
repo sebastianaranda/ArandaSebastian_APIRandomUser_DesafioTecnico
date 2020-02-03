@@ -35,6 +35,13 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/colorPrimary"
-        app:titleTextColor="@color/colorWhite" />
+        app:titleTextColor="@color/colorWhite"
+        app:menu="@menu/toolbar_menu"/>
+
+    <com.miguelcatalan.materialsearchview.MaterialSearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actionViewClass="android.widget.SearchView"/>
 
 </FrameLayout>

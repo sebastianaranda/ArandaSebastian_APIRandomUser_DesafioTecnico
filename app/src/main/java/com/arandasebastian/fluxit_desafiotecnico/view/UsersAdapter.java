@@ -16,15 +16,24 @@ import java.util.List;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHolder> {
 
     private List<User> userList;
+    private List<User> userListFiltered;
     private UserAdapterListener userAdapterListener;
 
     public UsersAdapter(UserAdapterListener userAdapterListener) {
         userList = new ArrayList<>();
+        userListFiltered = new ArrayList<>();
         this.userAdapterListener = userAdapterListener;
     }
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+        this.userListFiltered = userList;
+        notifyDataSetChanged();
+    }
+
+    public void addNewUsers(List<User> newUsers){
+        this.userList.addAll(newUsers);
+        this.userListFiltered = userList;
         notifyDataSetChanged();
     }
 
@@ -38,28 +47,42 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
-        User userShown = userList.get(position);
+        User userShown = userListFiltered.get(position);
         holder.setUser(userShown);
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return userListFiltered.size();
+    }
+
+    public void filter(String inputText) {
+        ArrayList<User> newUserListFiltered = new ArrayList<>();
+        for (User user : userList) {
+            String userToSearch = user.getName().getLastName().toLowerCase()+ " " + user.getName().getFirstName().toLowerCase();
+            if(userToSearch.contains(inputText.toLowerCase())){
+                newUserListFiltered.add(user);
+            }
+        }
+        userListFiltered = newUserListFiltered;
+        notifyDataSetChanged();
     }
 
     public class UsersViewHolder extends RecyclerView.ViewHolder{
 
         private TextView txtFirstName;
+        private TextView txtLastName;
         private ImageView imgUser;
 
         public UsersViewHolder(@NonNull final View itemView) {
             super(itemView);
             txtFirstName = itemView.findViewById(R.id.user_row_fistname);
+            txtLastName = itemView.findViewById(R.id.user_row_lastname);
             imgUser = itemView.findViewById(R.id.user_image_profile);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    User selectedUser = userList.get(getAdapterPosition());
+                    User selectedUser = userListFiltered.get(getAdapterPosition());
                     userAdapterListener.sendSelectedUser(selectedUser);
                 }
             });
@@ -67,6 +90,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 
         public void setUser(User user){
             txtFirstName.setText(user.getName().getFirstName());
+            txtLastName.setText(user.getName().getLastName());
             Glide.with(itemView)
                     .load(user.getPictures().getPictureLarge())
                     .placeholder(R.drawable.img_profile_placeholder)

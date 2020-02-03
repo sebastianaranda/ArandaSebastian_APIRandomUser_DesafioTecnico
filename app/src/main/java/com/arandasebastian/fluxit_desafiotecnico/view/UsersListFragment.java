@@ -22,6 +22,7 @@ public class UsersListFragment extends Fragment implements UsersAdapter.UserAdap
 
     ProgressBar progressBar;
     private FragmentUserListener fragmentUserListener;
+    private UsersAdapter usersAdapter;
 
     public UsersListFragment() {
     }
@@ -35,36 +36,59 @@ public class UsersListFragment extends Fragment implements UsersAdapter.UserAdap
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_users_list, container, false);
+        final View view = inflater.inflate(R.layout.fragment_users_list, container, false);
         final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.swipe_refresh_layout);
         progressBar = view.findViewById(R.id.fragment_user_list_progressbar);
         progressBar.setVisibility(View.VISIBLE);
         RecyclerView recyclerView = view.findViewById(R.id.fragment_users_recycler);
-        final UsersAdapter usersAdapter = new UsersAdapter(this);
+        usersAdapter = new UsersAdapter(this);
         final UserController userController = new UserController();
-        userController.getUsersFromDAO(new ResultListener<List<User>>() {
+        userController.getUsersPaginatedFromDAO(new ResultListener<List<User>>() {
             @Override
             public void finish(List<User> result) {
                 progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "El pedido se completo correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), userController.getSEED_KEY().toString(), Toast.LENGTH_SHORT).show();
                 usersAdapter.setUserList(result);
                 usersAdapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), "El pedido se completo correctamente", Toast.LENGTH_SHORT).show();
             }
         });
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(usersAdapter);
         pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                userController.getUsersFromDAO(new ResultListener<List<User>>() {
+                userController.getNewUsersFromDAO(new ResultListener<List<User>>() {
                     @Override
                     public void finish(List<User> result) {
+                        Toast.makeText(getContext(), "El pedido se completo correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), userController.getSEED_KEY().toString(), Toast.LENGTH_SHORT).show();
                         usersAdapter.setUserList(result);
                         usersAdapter.notifyDataSetChanged();
-                        Toast.makeText(getContext(), "El pedido se completo correctamente", Toast.LENGTH_SHORT).show();
                         pullToRefresh.setRefreshing(false);
                     }
                 });
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                Integer actualPosition = linearLayoutManager.findLastVisibleItemPosition();
+                Integer lastRow = linearLayoutManager.getItemCount();
+
+                if (actualPosition >= lastRow - 5){
+                    userController.getUsersPaginatedFromDAO(new ResultListener<List<User>>() {
+                        @Override
+                        public void finish(List<User> result) {
+                            usersAdapter.addNewUsers(result);
+                            usersAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
             }
         });
         return view;
@@ -77,6 +101,10 @@ public class UsersListFragment extends Fragment implements UsersAdapter.UserAdap
 
     public interface FragmentUserListener{
         void receiveUser(User user);
+    }
+
+    protected void filter( String inputText){
+        usersAdapter.filter(inputText);
     }
 
 }

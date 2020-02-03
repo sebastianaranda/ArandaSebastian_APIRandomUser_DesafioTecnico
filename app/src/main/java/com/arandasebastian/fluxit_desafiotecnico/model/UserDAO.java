@@ -15,8 +15,8 @@ public class UserDAO extends UsersRetrofitDAO {
         super(BASE_URL);
     }
 
-    public void getUsers(final ResultListener<List<User>> controllerListener){
-        Call<ContainerUsers> call = usersService.getUsersFromAPI();
+    public void getUsersPaginated(final ResultListener<List<User>> controllerListener, Integer SEED_KEY, Integer PAGE_NUMBER){
+        Call<ContainerUsers> call = usersService.getUsersPaginatedFromAPI(SEED_KEY, PAGE_NUMBER);
         call.enqueue(new Callback<ContainerUsers>() {
             @Override
             public void onResponse(Call<ContainerUsers> call, Response<ContainerUsers> response) {
